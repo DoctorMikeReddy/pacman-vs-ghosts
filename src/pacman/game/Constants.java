@@ -88,7 +88,7 @@ public final class Constants
 	public static final String[] distNames={"da","db","dc","dd"};
 	
 	//for GameView
-	public static final int MAG=2;
+	public static final int MAG=1;
 	public static final int GV_WIDTH=114;
 	public static final int GV_HEIGHT=130;
 

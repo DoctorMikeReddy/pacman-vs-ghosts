@@ -111,14 +111,14 @@ public final class GameView extends JComponent
     	{
     		DebugPointer dp=debugPointers.get(i);
     		bufferGraphics.setColor(dp.color);
-    		bufferGraphics.fillRect(dp.x*MAG+1,dp.y*MAG+5,10,10);
+    		bufferGraphics.fillRect(dp.x*(MAG+1)+1,dp.y*(MAG+1)+5,10,10);
     	}
     	
     	for(int i=0;i<debugLines.size();i++)
     	{
     		DebugLine dl=debugLines.get(i);
     		bufferGraphics.setColor(dl.color);
-    		bufferGraphics.drawLine(dl.x1*MAG+5,dl.y1*MAG+10,dl.x2*MAG+5,dl.y2*MAG+10);
+    		bufferGraphics.drawLine(dl.x1*(MAG+1)+5,dl.y1*(MAG+1)+10,dl.x2*(MAG+1)+5,dl.y2*(MAG+1)+10);
     	}
     	
     	debugPointers.clear();
@@ -194,7 +194,7 @@ public final class GameView extends JComponent
     private void drawMaze()
     {
     	bufferGraphics.setColor(Color.BLACK);
-    	bufferGraphics.fillRect(0,0,GV_WIDTH*MAG,GV_HEIGHT*MAG+20);
+    	bufferGraphics.fillRect(0,0,GV_WIDTH*(MAG+1),GV_HEIGHT*(MAG+1)+20);
         
     	bufferGraphics.drawImage(images.getMaze(game.getMazeIndex()),2,6,null);
     }
@@ -210,7 +210,7 @@ public final class GameView extends JComponent
         
         for(int i=0;i<pillIndices.length;i++)
         	if(game.isPillStillAvailable(i))
-        		bufferGraphics.fillOval(game.getNodeXCood(pillIndices[i])*MAG+4,game.getNodeYCood(pillIndices[i])*MAG+8,3,3);
+        		bufferGraphics.fillOval(game.getNodeXCood(pillIndices[i])*(MAG+1)+4,game.getNodeYCood(pillIndices[i])*(MAG+1)+8,3,3);
     }
     
     /**
@@ -224,7 +224,7 @@ public final class GameView extends JComponent
           
           for(int i=0;i<powerPillIndices.length;i++)
           	if(game.isPowerPillStillAvailable(i))
-          		bufferGraphics.fillOval(game.getNodeXCood(powerPillIndices[i])*MAG+1,game.getNodeYCood(powerPillIndices[i])*MAG+5,8,8);
+          		bufferGraphics.fillOval(game.getNodeXCood(powerPillIndices[i])*(MAG+1)+1,game.getNodeYCood(powerPillIndices[i])*(MAG+1)+5,8,8);
     }
     
     /**
@@ -239,7 +239,7 @@ public final class GameView extends JComponent
     	if(tmpLastPacManMove!=MOVE.NEUTRAL)
     		lastPacManMove=tmpLastPacManMove;
 
-    	bufferGraphics.drawImage(images.getPacMan(lastPacManMove,time),game.getNodeXCood(pacLoc)*MAG-1,game.getNodeYCood(pacLoc)*MAG+3,null);
+    	bufferGraphics.drawImage(images.getPacMan(lastPacManMove,time),game.getNodeXCood(pacLoc)*(MAG+1)-1,game.getNodeYCood(pacLoc)*(MAG+1)+3,null);
     }
 
     /**
@@ -257,18 +257,18 @@ public final class GameView extends JComponent
 	    	{
 	    		//what is the second clause for????
 	    		if(game.getGhostEdibleTime(ghostType)<EDIBLE_ALERT && ((time%6)/3)==0)
-	    			bufferGraphics.drawImage(images.getEdibleGhost(true,time),nodeXCood*MAG-1,nodeYCood*MAG+3,null);
+	    			bufferGraphics.drawImage(images.getEdibleGhost(true,time),nodeXCood*(MAG+1)-1,nodeYCood*(MAG+1)+3,null);
 	            else
-	            	bufferGraphics.drawImage(images.getEdibleGhost(false,time),nodeXCood*MAG-1,nodeYCood*MAG+3,null);
+	            	bufferGraphics.drawImage(images.getEdibleGhost(false,time),nodeXCood*(MAG+1)-1,nodeYCood*(MAG+1)+3,null);
 	    	}
 	    	else 
 	    	{
 	    		int index=ghostType.ordinal();
 	    		
 	    		if(game.getGhostLairTime(ghostType)>0) 		
-	    			bufferGraphics.drawImage(images.getGhost(ghostType,game.getGhostLastMoveMade(ghostType),time),nodeXCood*MAG-1+(index*5),nodeYCood*MAG+3,null);
+	    			bufferGraphics.drawImage(images.getGhost(ghostType,game.getGhostLastMoveMade(ghostType),time),nodeXCood*(MAG+1)-1+(index*5),nodeYCood*(MAG+1)+3,null);
 	    		else    
-	    			bufferGraphics.drawImage(images.getGhost(ghostType,game.getGhostLastMoveMade(ghostType),time),nodeXCood*MAG-1,nodeYCood*MAG+3,null);
+	    			bufferGraphics.drawImage(images.getGhost(ghostType,game.getGhostLastMoveMade(ghostType),time),nodeXCood*(MAG+1)-1,nodeYCood*(MAG+1)+3,null);
 	    	}
     	}
     }
@@ -310,7 +310,7 @@ public final class GameView extends JComponent
      */
     public Dimension getPreferredSize()
     {
-        return new Dimension(GV_WIDTH*MAG,GV_HEIGHT*MAG+20);
+        return new Dimension(GV_WIDTH*(MAG+1),GV_HEIGHT*(MAG+1)+20);
     }
     
     /**
