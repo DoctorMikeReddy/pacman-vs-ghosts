@@ -381,6 +381,7 @@ public class Executor
 
             	input=br.readLine();	
             }
+            br.close();
         }
         catch(IOException ioe)
         {
